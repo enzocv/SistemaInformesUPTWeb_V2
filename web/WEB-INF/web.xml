@@ -8,6 +8,18 @@
         <servlet-name>TraerDatosInfo</servlet-name>
         <servlet-class>Servlets.TraerDatosInfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ActualizarEstadoInformeAdmin</servlet-name>
+        <servlet-class>Servlets.ActualizarEstadoInformeAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarInfoFinal</servlet-name>
+        <servlet-class>Servlets.ActualizarInfoFinal</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BucarInfoFinal</servlet-name>
+        <servlet-class>Servlets.BucarInfoFinal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuardarInfoFinal</servlet-name>
         <url-pattern>/GuardarInfoFinal</url-pattern>
@@ -15,6 +27,18 @@
     <servlet-mapping>
         <servlet-name>TraerDatosInfo</servlet-name>
         <url-pattern>/TraerDatosInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarEstadoInformeAdmin</servlet-name>
+        <url-pattern>/ActualizarEstadoInformeAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarInfoFinal</servlet-name>
+        <url-pattern>/ActualizarInfoFinal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BucarInfoFinal</servlet-name>
+        <url-pattern>/BucarInfoFinal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

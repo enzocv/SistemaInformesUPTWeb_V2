@@ -450,10 +450,6 @@
                                     <input class="btn btn-primary" type="submit" name="Guardar" value="Guardar">
                                     <input class="btn btn-primary" type="submit" name="Enviar"  value="Enviar">
                                 <%}%>
-                                <% if(nivelUsuario.equals("Administrador") || nivelUsuario.equals("Supervisor")){ %>
-                                    <input class="btn btn-success" type="submit" name="Aceptar" value="Aceptar">
-                                    <input class="btn btn-danger" type="submit" name="Rechazar" value="Rechazar">
-                                <% } %> 
                                 <input class="btn btn-primary" type="submit" name="Informe" value="Hacer Informe">
                                 <a href="consultaPruebaEntrada.jsp" class="btn btn-primary"> Volver</a>
                             </div>
