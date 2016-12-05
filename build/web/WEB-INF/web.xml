@@ -20,6 +20,10 @@
         <servlet-name>BucarInfoFinal</servlet-name>
         <servlet-class>Servlets.BucarInfoFinal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TraerDatosCabeceraPortafolio</servlet-name>
+        <servlet-class>Servlets.TraerDatosCabeceraPortafolio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuardarInfoFinal</servlet-name>
         <url-pattern>/GuardarInfoFinal</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>BucarInfoFinal</servlet-name>
         <url-pattern>/BucarInfoFinal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TraerDatosCabeceraPortafolio</servlet-name>
+        <url-pattern>/TraerDatosCabeceraPortafolio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

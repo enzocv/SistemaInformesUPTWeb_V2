@@ -48,9 +48,7 @@
                 <div class="form-reporte shadow">
                     <form class="" method="post" action="/SistemaInformesUPTWeb-V2/GuardarInfoFinal">
                         <fieldset>
-
                             <div class="form-group">
-
                                 <div class="sub-title">  
                                     <h2>Informe Final del Curso</h2>
                                     <h4>Semestre</h4>
@@ -63,24 +61,24 @@
                                     <label class="col-lg-2 ">Nombre :</label>
                                     <div class="col-lg-4">
                                         <% if(datos != null){%>
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datos[1]%>'>
+                                        <input type="text" class="form-control input-sm" id="" value='<%=datos[1]%>' disabled >
                                         <%} else{%>
-                                        <input type="text" class="form-control input-sm" id="" value=''>
+                                        <input type="text" class="form-control input-sm" id="" value='' disabled >
                                         <%} %>
                                     </div>   
 
                                     <label class="col-lg-2 ">Código :</label>
                                     <div class="col-lg-3">
                                         <% if(datos != null){%>
-                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value='<%=datos[0]%>'>
+                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value='<%=datos[0]%>' disabled>
                                         <%} else{%>
-                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value=''>
+                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value='' disabled>
                                         <%} %>
                                         
                                         <% if(datos != null){%>
-                                            <input  type="hidden" name="idCurso" value="<%=datos[0]%>"
+                                            <input  type="hidden" name="idCurso" value="<%=datos[0]%>"/>
                                         <% }else { %>
-                                            <input  type="hidden" name="id_Final" value="">
+                                            <input  type="hidden" name="id_Final" value="" >
                                         <% } %>
                                     </div>
 
@@ -129,9 +127,9 @@
                                     <label class="col-lg-2 ">Nombre :</label>
                                     <div class="col-lg-4">
                                         <% if(datos != null){ %>
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datos[8]%>'>
+                                        <input type="text" class="form-control input-sm" id="" value='<%=datos[8]%>' disabled >
                                         <%} else{ %>
-                                        <input type="text" class="form-control input-sm" id="" value=''>
+                                        <input type="text" class="form-control input-sm" id="" value='' disabled >
                                         <%}%>
                                     </div>                      
                                 </div>
@@ -141,18 +139,18 @@
                                     <label class="col-lg-2 ">Email :</label>
                                     <div class="col-lg-4">
                                         <% if(datos != null){ %>
-                                        <input type="email" min="0" class="form-control input-sm" id="" value='<%=datos[9]%>'>
+                                        <input type="email" min="0" class="form-control input-sm" id="" value='<%=datos[9]%>' disabled>
                                         <%} else{ %>
-                                        <input type="email" min="0" class="form-control input-sm" id="" value=''>
+                                        <input type="email" min="0" class="form-control input-sm" id="" value='' disabled>
                                         <%}%>
                                     </div>
 
                                     <label class="col-lg-2 ">Celular :</label>
                                     <div class="col-lg-3">
                                         <% if(datos != null){ %>
-                                        <input type="number" min="0" class="form-control input-sm" id="" value='<%=datos[10]%>'>
+                                        <input type="number" min="0" class="form-control input-sm" id="" value='<%=datos[10]%>' disabled>
                                         <%}else {%>
-                                        <input type="number" min="0" class="form-control input-sm" id="" value=''>
+                                        <input type="number" min="0" class="form-control input-sm" id="" value='' disabled>
                                         <%}%>
                                     </div>                                
                                 </div>
@@ -178,7 +176,7 @@
                                     </div>  
                                     <div class="col-lg-1">
                                         
-                                        <input type="text" name="porcentajeSilabo" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeSilabo" class="form-control input-sm" id="" value='' disabled >
                                         
                                     </div>  
                                 </div>
@@ -188,7 +186,7 @@
                                         <input type="text" name="caliRealizadas" class="form-control input-sm" id="" value=''>
                                    </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajePCalificadas" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajePCalificadas" class="form-control input-sm" id="" value='' disabled>
                                    </div>  
                                 </div>
                                 <div class="row">                                
@@ -197,7 +195,7 @@
                                         <input type="text" name="laboRealizada" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeLabRealizadas" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeLabRealizadas" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -206,48 +204,48 @@
                                         <input type="text" name="proyeRealizado" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajePRealiados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajePRealiados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes matriculados</label>
                                     <div class="col-lg-1">
                                         <% if(datos != null){ %>
-                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='<%=datos[4]%>'>
+                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='<%=datos[4]%>' disabled>
                                         <%}
                                          else{ %>
-                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='' disabled>
                                         <%}%>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeMatriculados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeMatriculados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes retirados</label>
                                     <div class="col-lg-1">
                                         <% if(datos != null){ %>
-                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='<%=datos[5]%>'>
+                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='<%=datos[5]%>' disabled>
                                         <%} else { %>
-                                        <input type="text" name="estReti" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                         
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeRetirados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeRetirados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes con abandono</label>
                                     <div class="col-lg-1">
                                         <% if(datos != null){ %>
-                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='<%=datos[6]%>'>
+                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='<%=datos[6]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAbandono" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAbandono" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -256,7 +254,7 @@
                                         <input type="text" name="estAsiste" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -265,7 +263,7 @@
                                         <input type="text" name="estAprobado" class="form-control input-sm" id="" value=''>                                       
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAprobados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -274,7 +272,7 @@
                                         <input type="text" name="estDesapro" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeDesaprobados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeDesaprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                

@@ -33,7 +33,7 @@
                               <select class="form-control" id="select" name="tipoReporte">
                                 <option value="Prueba Entrada">Informe Prueba de Entrada</option>
                                 <option value="Informe Final Curso">Informe Prueba Final</option>
-                                <option value="2">Informe de Portafolio</option>
+                                <option value="Portafolio">Informe de Portafolio</option>
                               </select>
                             </div>
                         </div>
@@ -81,6 +81,13 @@
                                                                 if(busqueda.equals("Informe Final Curso")){
                                                                 %>            
                                                                 <a href="TraerDatosInfo?id_Curso=<%=objenti.getIdCurso()%>" class="btn btn-info btn-xs btn-controles">Hacer informe</a>                                      
+                                                                <%
+                                                            }
+                                                            %>
+                                                            <%
+                                                                if(busqueda.equals("Portafolio")){
+                                                                %>            
+                                                                <a href="TraerDatosCabeceraPortafolio?busqueda=Portafolio" class="btn btn-info btn-xs btn-controles">Hacer informe</a>                                      
                                                                 <%
                                                             }
                                                             %>

@@ -133,6 +133,9 @@
                                                     else if(tipoInfo.equals("Entrada")){
                                                         rs  =negPruebaEntrada.ConsultaAvanzaPruebaEntradaUsuario(criterio, busqueda,codDocente);
                                                     }
+                                                    else if(tipoInfo.equals("Portafolio")){
+                                                        //rs  =negPruebaEntrada.ConsultaAvanzaPruebaEntradaUsuario(criterio, busqueda,codDocente);
+                                                    }
 
                                                     boolean encuentra = false;
                                                     

@@ -43,17 +43,23 @@
 %>
 
 <%
-    
-    
-    String uso = datos4[3];
-    String aula[] = uso.split(",");
+    String mate = "";
+    String cues = "";
+    String tare = "";
+    String foro = "";
+    String exam = "";
+    String pptx = "";
+    if(datos4 != null && !datos4[3].equals("")){
+        String uso = datos4[3];
+        String aula[] = uso.split(",");
 
-    String mate = aula[0].equals("Material del Curso") ? "checked":"";
-    String cues = aula[2].equals("Cuestionarios") ? "checked":"";
-    String tare = aula[4].equals("Tareas Encargadas") ? "checked":"";
-    String foro = aula[1].equals("Foros") ? "checked":"";
-    String exam = aula[3].equals("Examenes Virtuales") ? "checked":"";
-    String pptx = aula[5].equals("Presentaciones") ? "checked":"";
+        mate = aula[0].equals("Material del Curso") ? "checked":"";
+        cues = aula[2].equals("Cuestionarios") ? "checked":"";
+        tare = aula[4].equals("Tareas Encargadas") ? "checked":"";
+        foro = aula[1].equals("Foros") ? "checked":"";
+        exam = aula[3].equals("Examenes Virtuales") ? "checked":"";
+        pptx = aula[5].equals("Presentaciones") ? "checked":"";
+    }
 %>
 
 <head>
@@ -80,12 +86,12 @@
 
                                     <label class="col-lg-2 ">Nombre :</label>
                                     <div class="col-lg-4">
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datos2[1]%>'>
+                                        <input type="text" class="form-control input-sm" id="" value='<%=datos2[1]%>' disabled>
                                     </div>   
 
                                     <label class="col-lg-2 ">Código :</label>
                                     <div class="col-lg-3">
-                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value='<%=datos2[0]%>'>
+                                        <input type="text" class="form-control input-sm"  name="idCurso" id="" value='<%=datos2[0]%>' disabled>
                                     </div>
 
 
@@ -101,7 +107,7 @@
                                 <div class="row">
                                     <label class="col-lg-2 ">Teórico :</label>
                                     <div class="col-lg-1">
-                                        <input type="checkbox" min="0" class="" id="" name='' value='' <%=teo%>>
+                                        <input type="checkbox" min="0" class="" id="" name='' value='' <%=teo%> >
                                     </div>
 
                                     <label class="col-lg-2 ">Práctico :</label>
@@ -129,7 +135,7 @@
                                 <div class="row">                                
                                     <label class="col-lg-2 ">Nombre :</label>
                                     <div class="col-lg-4">
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datos2[8]%>'>
+                                        <input type="text" class="form-control input-sm" id="" value='<%=datos2[8]%>' disabled>
                                     </div>                      
                                 </div>
 
@@ -137,12 +143,12 @@
 
                                     <label class="col-lg-2 ">Email :</label>
                                     <div class="col-lg-4">
-                                        <input type="email" min="0" class="form-control input-sm" id="" value='<%=datos2[10]%>'>
+                                        <input type="email" min="0" class="form-control input-sm" id="" value='<%=datos2[10]%>' disabled>
                                     </div>
 
                                     <label class="col-lg-2 ">Celular :</label>
                                     <div class="col-lg-3">
-                                        <input type="number" min="0" class="form-control input-sm" id="" value='<%=datos2[9]%>'>
+                                        <input type="number" min="0" class="form-control input-sm" id="" value='<%=datos2[9]%>' disabled>
                                     </div>                                
                                 </div>
 
@@ -166,7 +172,7 @@
                                         <input type="text" name="porSilabo" class="form-control input-sm" id="" value='<%=datos2[14]%>'>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeSilabo" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeSilabo" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -175,7 +181,7 @@
                                         <input type="text" name="caliRealizadas" class="form-control input-sm" id="" value='<%=datos2[15]%>'>
                                    </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajePCalificadas" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajePCalificadas" class="form-control input-sm" id="" value='' disabled>
                                    </div>  
                                 </div>
                                 <div class="row">                                
@@ -184,7 +190,7 @@
                                         <input type="text" name="laboRealizada" class="form-control input-sm" id="" value='<%=datos2[16]%>'>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeLabRealizadas" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeLabRealizadas" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -193,34 +199,34 @@
                                         <input type="text" name="proyeRealizado" class="form-control input-sm" id="" value='<%=datos2[17]%>'>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajePRealiados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajePRealiados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes matriculados</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='<%=datos2[4]%>'>
+                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='<%=datos2[4]%>' disabled>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeMatriculados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeMatriculados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes retirados</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='<%=datos2[5]%>'>
+                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='<%=datos2[5]%>' disabled>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeRetirados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeRetirados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Estudiantes con abandono</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='<%=datos2[6]%>'>
+                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='<%=datos2[6]%>' disabled>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAbandono" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAbandono" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -229,7 +235,7 @@
                                         <input type="text" name="estAsiste" class="form-control input-sm" id="" value='<%=datos2[18]%>'>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -238,7 +244,7 @@
                                         <input type="text" name="estAprobado" class="form-control input-sm" id="" value='<%=datos2[19]%>'>                                       
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeAprobados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeAprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
@@ -247,7 +253,7 @@
                                         <input type="text" name="estDesapro" class="form-control input-sm" id="" value='<%=datos2[20]%>'>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="porcentajeDesaprobados" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="porcentajeDesaprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
