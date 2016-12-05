@@ -77,7 +77,7 @@
                                                 tipoInforme = request.getParameter("Informe");
                                                 ClsNegocioPruebaEntrada datos = new ClsNegocioPruebaEntrada();
 
-                                                dato = datos.verInformesTotales(tipoInforme);
+                                                dato = datos.verInformesTotalesDocente(tipoInforme,codDocente);
 
                                                 Iterator iterator = dato.iterator();
 
@@ -85,7 +85,10 @@
                                                     ClsEntidadPruebaCursosFaltantes objenti = new ClsEntidadPruebaCursosFaltantes();
 
                                                     objenti = (ClsEntidadPruebaCursosFaltantes) iterator.next();
+                                                    
+                                                    if( codDocente.equals(objenti.getCodigoDocente())){
                                                     %>
+                                                    
                                                     <tr>
                                                             <td> <%= objenti.getCargaAcademica()%> </td>
                                                             <td> <%= objenti.getCodigoDocente()%> </td>
@@ -121,7 +124,7 @@
                                                                     <td class="btn-success"> <%= objenti.getEstadoPrueba()%> </td>
                                                                     <%
                                                                 }
-                                                            %>                                                                                                                        
+                                                        }        %>                                                                                                                        
                                                     <%
                                                    
                                                 }

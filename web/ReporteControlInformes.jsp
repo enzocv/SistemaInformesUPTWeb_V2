@@ -13,6 +13,8 @@
 
 
 <%
+    String codDocente = String.valueOf(session.getAttribute("codDocente"));
+    String nivelUsuario = String.valueOf(session.getAttribute("nivelUsuario"));
     String tipoInforme = "";
     String tipoGrafico = "";
     if (request.getParameter("tipoInforme")!= null && request.getParameter("tipoGrafico") != null) {
@@ -44,8 +46,11 @@
                         <div class="form-group">
                             <%
                                 if (tipoInforme.equals("Prueba Entrada")) {
-                                    rs = negocio.verInformesTotalesGraficos(tipoInforme);
-                                    
+                                    if (nivelUsuario.equals("Usuario")) {
+                                        rs = negocio.verInformesTotalesGraficosPorDocente(tipoInforme, codDocente);
+                                    }else{
+                                        rs = negocio.verInformesTotalesGraficos(tipoInforme);
+                                    }
                                     if (tipoGrafico.equals("Pie")) {
                                         
                                         while (rs.next()){
@@ -73,7 +78,11 @@
                                     }
                                 } 
                                 else if (tipoInforme.equals("Informe Final Curso")){
-                                    rs = negocio.verInformesTotalesGraficos(tipoInforme);
+                                    if (nivelUsuario.equals("Usuario")) {
+                                        rs = negocio.verInformesTotalesGraficosPorDocente(tipoInforme, codDocente);
+                                    }else{
+                                        rs = negocio.verInformesTotalesGraficos(tipoInforme);
+                                    }
                                     
                                     if (tipoGrafico.equals("Pie")) {
                                         

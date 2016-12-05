@@ -58,6 +58,9 @@
                                         <li><a href="ControlInformes.jsp?Informe=Prueba+Entrada&Buscar=Buscar&tabla_length=20">Control de Informes</a></li>
                                 <%
                                         }
+                                        else {%>
+                                        <li><a href="ControlInformeCursos.jsp">Consulta Informes Por Cursos</a></li>
+                                        <% }
                                     }
                                 %>
                             </ul>
