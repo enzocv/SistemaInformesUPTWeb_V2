@@ -9,7 +9,10 @@ import Negocio.ClsNegocioCapadidadInformeFinalCurso;
 import Negocio.ClsNegocioInformeFinalCurso;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -63,20 +66,22 @@ public class ActualizarEstadoInformeAdmin extends HttpServlet {
         String codDocente = String.valueOf(request.getSession().getAttribute("codDocente"));
         String idCurso = request.getParameter("idCurso");
         String estado = request.getParameter("estado");
+        String id_Final = request.getParameter("id_Final");
         
-        
-        /*OBTENER EL ID DEL INFORME FINAL DEL CURSO*/
-        ClsNegocioCapadidadInformeFinalCurso negocioCapacidadIdInfo = new ClsNegocioCapadidadInformeFinalCurso();
-        ArrayList<String> idinfo = negocioCapacidadIdInfo.obtenerInfoFinalDocente(codDocente, idCurso);
-        String id[] = idinfo.toArray(new String[idinfo.size()]);
-        /*FIN*/
         
         ClsNegocioInformeFinalCurso negoFinal = new ClsNegocioInformeFinalCurso();
         
-        String estado2 = request.getParameter("Aceptar") != null ? "Aprobado":"Observado";
+        String estado2 = estado.equals("Aceptado") ? "Aprobado":"Observado";
         
-        negoFinal.ModificarEstadoInformeFinal("12", estado2);
+        negoFinal.ModificarEstadoInformeFinal(id_Final, estado2);
         
+        try {
+            negoFinal.conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ActualizarEstadoInformeAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        response.sendRedirect("imprimirReporte.jsp");
         
     }
 

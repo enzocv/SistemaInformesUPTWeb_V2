@@ -442,6 +442,8 @@
                                     <input class="btn btn-primary" type="submit" name="Enviar" value="Enviar">
                                 <%}%>
                                 <% if(nivelUsuario.equals("Administrador") || nivelUsuario.equals("Supervisor")){ %>
+                                <a href="/SistemaInformesUPTWeb-V2/ActualizarEstadoInformeAdmin?estado=Aceptado&id_Final=<%=idInfoFinal%>&idCurso=<%=datos2[0]%>">Aceptar</a>
+                                <a href="/SistemaInformesUPTWeb-V2/ActualizarEstadoInformeAdmin?estado=Rechazado&id_Final=<%=idInfoFinal%>&idCurso=<%=datos2[0]%>">Rechazar</a>
                                     <input class="btn btn-success" type="submit" name="Aceptar" value="Aceptar">
                                     <input class="btn btn-danger" type="submit" name="Rechazar" value="Rechazar">
                                 <% } %> 
