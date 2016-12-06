@@ -28,6 +28,10 @@
         <servlet-name>GuardarPortafolio</servlet-name>
         <servlet-class>Servlets.GuardarPortafolio</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TraerDatosCompletosPortafolio</servlet-name>
+        <servlet-class>Servlets.TraerDatosCompletosPortafolio</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuardarInfoFinal</servlet-name>
         <url-pattern>/GuardarInfoFinal</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>GuardarPortafolio</servlet-name>
         <url-pattern>/GuardarPortafolio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TraerDatosCompletosPortafolio</servlet-name>
+        <url-pattern>/TraerDatosCompletosPortafolio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
