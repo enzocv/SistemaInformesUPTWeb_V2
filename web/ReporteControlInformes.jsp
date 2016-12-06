@@ -110,6 +110,39 @@
                                     }
                                     
                                 }
+                                else if (tipoInforme.equals("Portafolio")){
+                                    if (nivelUsuario.equals("Usuario")) {
+                                        rs = negocio.verInformesTotalesGraficosPorDocente(tipoInforme, codDocente);
+                                    }else{
+                                        rs = negocio.verInformesTotalesGraficos(tipoInforme);
+                                    }
+                                    
+                                    if (tipoGrafico.equals("Pie")) {
+                                        
+                                        while (rs.next()){
+                                            String name = rs.getString(1);
+                                            String valor = rs.getString(2);
+                                            dataPie += "{ name: '" + name + "', y: " + valor + "}, ";
+                                        }
+                                        
+                                        %>
+                                        
+                                        <div id="graficoPie">                                            
+                                        </div>
+                                        <%
+                                    } else {
+                                            while (rs.next()){
+                                            String name = rs.getString(1);
+                                            String valor = rs.getString(2);
+                                            dataBarras += "{name: '"+name+"', y: " + valor + ",drilldown: '" + name + "'},";
+                                        }
+                                        %>                                        
+                                        <div id="graficoBarras">                                            
+                                        </div>
+                                        <%
+                                    }
+                                    
+                                }
                                 else if (tipoInforme.equals("")){
                                     
                                 }

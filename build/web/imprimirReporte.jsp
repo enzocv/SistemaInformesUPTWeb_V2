@@ -3,6 +3,7 @@
     Created on : 14-nov-2016, 20:52:58
     Author     : Drei
 --%>
+<%@page import="Negocio.ClsNegocioPortafolio"%>
 <%@page import="Negocio.ClsNegocioInformeFinalCurso"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="Entidad.ClsEntidadPruebaCursosFaltantes"%>
@@ -167,6 +168,69 @@
                     break;
                 }      
                 break;
+            case "Portafolio":
+                ClsNegocioPortafolio negPortafolio = new ClsNegocioPortafolio();
+
+                criterio = request.getParameter("criterio");
+                busqueda = request.getParameter("busqueda");
+
+                switch(nivelUsuario){
+                case "Usuario":                    
+                    try {
+                    rs  =negPortafolio.ConsultaInformeUsuario(criterio, busqueda,codDocente);
+
+                    boolean encuentra = false;
+                    
+                    String Campo[] = new String[5];
+                    
+                    while (rs.next()) {
+                        DatosPruebaEntradaUsuario.add((String) rs.getString(1)); 
+                        DatosPruebaEntradaUsuario.add((String) rs.getString(2)); 
+                        DatosPruebaEntradaUsuario.add((String) rs.getString(3)); 
+                        DatosPruebaEntradaUsuario.add((String) rs.getString(4)); 
+                        DatosPruebaEntradaUsuario.add((String) rs.getString(5)); 
+                        
+                        encuentra = true;
+                    }
+
+                    if (encuentra == false) {
+                        mensaje = "No se encuentra.";
+                    }
+                    rs.close();
+                    negPortafolio.conexion.close();
+                    } catch (Exception ex) {
+                    }
+                    break;
+                case "Supervisor":            
+                case "Administrador":
+                    try {
+                        rs  =negPortafolio.ConsultaInformeAdministrador(criterio, busqueda);
+
+                        boolean encuentra = false;
+                        String Campo[] = new String[8];
+
+                        while (rs.next()) {
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(1))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(2))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(3))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(4))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(5))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(6))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(7))); 
+                            DatosPruebaEntradaAdministrador.add(String.valueOf(rs.getString(8)));
+                            encuentra = true;
+                        }
+
+                        if (encuentra == false) {
+                            mensaje = "No se encuentra.";
+                        }
+                        rs.close();
+                        negPortafolio.conexion.close();
+                    } catch (Exception ex) {
+                    }
+                    break;
+                }      
+                break;
         }
     }
 
@@ -180,7 +244,7 @@
                 <form class="form-reporte shadow">
                     <fieldset>
                         <div class="form-group">
-                            <h2>Informes Faltantes</h2>
+                            <h2>Imprimir Reportes</h2>
                         </div>
                         <div class="form-group">
                             <label for="select" class="control-label">Tipo de reporte</label>
@@ -320,6 +384,11 @@
                                                                         else if(tipoInforme.equals("Final")){
                                                                     %>
                                                                             <a href="ReporteInformeFinal.jsp?id_InformeFinal=<%=DatosPruebaEntradaAdministrador.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
+                                                                    <%
+                                                                        }
+                                                                        else if(tipoInforme.equals("Portafolio")){
+                                                                    %>
+                                                                            <a href="ReportePortafolio.jsp?id_InformeFinal=<%=DatosPruebaEntradaAdministrador.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
                                                                     <%
                                                                         }
                                                                     %>
