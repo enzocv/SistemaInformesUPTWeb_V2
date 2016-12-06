@@ -178,7 +178,7 @@
                                     <table class="table table-striped table-responsive table-prueba-entrada" id="tab1_logic">
                                         <thead>
                                             <th class="col-md-1">#</th>
-                                            <th class="col-md-6">Material Docente Integrado</th>
+                                            <th class="col-md-6">Material Docente Entregado</th>
                                             <th class="col-md-1">Digital</th>
                                             <th class="col-md-1">Impreso</th>
                                             <th class="col-md-1">Cantidad</th>
@@ -210,7 +210,7 @@
                                     <table class="table table-striped table-responsive table-prueba-entrada" id="tab2_logic">
                                         <thead>
                                             <th class="col-md-1">#</th>
-                                            <th class="col-md-6">Material Integrado</th>
+                                            <th class="col-md-6">Material Entregado</th>
                                             <th class="col-md-1">Digital</th>
                                             <th class="col-md-1">Impreso</th>
                                             <th class="col-md-1">Cantidad</th>

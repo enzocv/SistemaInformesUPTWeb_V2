@@ -3,6 +3,7 @@
     Created on : 14-nov-2016, 20:52:58
     Author     : Drei
 --%>
+<%@page import="Negocio.ClsNegocioPortafolio"%>
 <%@page import="Negocio.ClsNegocioInformeFinalCurso"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="Entidad.ClsEntidadPruebaCursosFaltantes"%>
@@ -122,7 +123,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% ClsNegocioInformeFinalCurso negoInfo = new ClsNegocioInformeFinalCurso();
+                                        <% 
+                                            ClsNegocioInformeFinalCurso negoInfo = new ClsNegocioInformeFinalCurso();
+                                            ClsNegocioPortafolio negoPorta = new ClsNegocioPortafolio();
                                             if (request.getParameter("Buscar")!=null) {
                                                 if (nivelUsuario.equals("Usuario")) {
                                                     String tipoInfo = request.getParameter("Informe");
@@ -134,7 +137,7 @@
                                                         rs  =negPruebaEntrada.ConsultaAvanzaPruebaEntradaUsuario(criterio, busqueda,codDocente);
                                                     }
                                                     else if(tipoInfo.equals("Portafolio")){
-                                                        //rs  =negPruebaEntrada.ConsultaAvanzaPruebaEntradaUsuario(criterio, busqueda,codDocente);
+                                                        rs  =negoPorta.ConsultaAvanzaPortafolioUsuario(criterio, busqueda,codDocente);
                                                     }
 
                                                     boolean encuentra = false;
@@ -152,7 +155,11 @@
                                                             <% } 
                                                             else if(tipoInfo.equals("Final")) {%>
                                                                 <td> <a href="BucarInfoFinal?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe F</a></td>
+                                                            <% } 
+                                                            else if(tipoInfo.equals("Portafolio")) {%>
+                                                                <td> <a href="portafolio?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
                                                             <% } %>
+                                                            
                                                         </tr>
                                                         <%
                                                         
@@ -171,6 +178,9 @@
                                                     else if(tipoInfo.equals("Final")){
                                                         negoInfo.conexion.close();
                                                     }
+                                                    else if(tipoInfo.equals("Portafolio")){
+                                                        negoInfo.conexion.close();
+                                                    }
                                                     
                                                 }
                                                 else if(nivelUsuario.equals("Supervisor") || nivelUsuario.equals("Administrador")){
@@ -181,6 +191,9 @@
                                                     }
                                                     else if(tipoInfo.equals("Entrada")){
                                                         rs  =negPruebaEntrada.ConsultaAvanzaPruebaEntrada(criterio, busqueda);
+                                                    }
+                                                    else if(tipoInfo.equals("Portafolio")){
+                                                        rs  =negoPorta.ConsultaAvanzaPortafolioAdministrador(criterio, busqueda);
                                                     }
 
                                                     
@@ -203,6 +216,9 @@
                                                             <% } 
                                                             else if(tipoInfo.equals("Final")) {%>
                                                                 <td> <a href="BucarInfoFinal?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe F</a></td>
+                                                            <% } 
+                                                            else if(tipoInfo.equals("Portafolio")) {%>
+                                                                <td> <a href="portafolio.jsp?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
                                                             <% } %>
                                                         </tr>
                                                         <%
