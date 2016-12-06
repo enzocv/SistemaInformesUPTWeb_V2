@@ -33,7 +33,7 @@
         <div class="container body-padding">
             <div class="row">
                 <div class="form-reporte shadow">
-                    <form class="" method="post" action="GuardarPortafolio">
+                    <form class="form" id="form" method="post" action="GuardarPortafolio">
                         <fieldset>
                             <div class="form-group">
                                 <div class="sub-title">  
@@ -187,8 +187,8 @@
                                             <tr id='t1addr0'>
                                                 <td><input name="" value="1" type="text" class="form-control"/></td>
                                                 <td><input name="t1descripcion" value="" type="text" class="form-control"/></td>
-                                                <td><input type="checkbox" name="t1chkdigital" value="digital"/></td>
-                                                <td><input type="checkbox" name="t1chkimpreso" value="impreso"/></td>
+                                                <td><input type="checkbox" name="t1chkdigital" value=""/></td>
+                                                <td><input type="checkbox" name="t1chkimpreso" value=""/></td>
                                                 <td><input name="t1cantidad"    value="" type="text" class="form-control"/></td>
                                             </tr>
                                             <tr id='t1addr1'></tr>
@@ -219,8 +219,8 @@
                                             <tr id='t2addr0'>
                                                 <td><input name=""              value="1" type="text" class="form-control"/></td>
                                                 <td><input name="t2descripcion" value="" type="text" class="form-control"/></td>
-                                                <td><input name="t2chkdigital"  value="digital" type="checkbox"/></td>
-                                                <td><input name="t2chkimpreso"  value="impreso" type="checkbox"/></td>
+                                                <td><input name="t2chkdigital"  value="" type="checkbox"/></td>
+                                                <td><input name="t2chkimpreso"  value="" type="checkbox"/></td>
                                                 <td><input name="t2cantidad"    value="" type="text" class="form-control"/></td>
                                             </tr>
                                             <tr id='t2addr1'></tr>
@@ -262,6 +262,25 @@
             </div>
         </div>   
         <script>
+            
+            $("form").submit(function () {
+            var this_master = $(this);
+
+            this_master.find('input[type="checkbox"]').each( function () {
+                var checkbox_this = $(this);
+                
+                    if( checkbox_this.is(":checked") == true ) {
+                        checkbox_this.attr('value','1');
+                    } else {
+                        checkbox_this.prop('checked',true);
+                        //DONT' ITS JUST CHECK THE CHECKBOX TO SUBMIT FORM DATA    
+                        checkbox_this.attr('value','0');
+                    }
+                });
+            });
+            
+
+            
             /*ADD AND DELETE ROW FOR TABLE 1*/
             var i=1;
             var calculadoPorcentajes = false;
@@ -269,8 +288,8 @@
                 
                 $('#t1addr'+i).html("<td><input value='"+ (i + 1) +"' type='text' class='form-control'/></td>"+
                                "<td><input name='t1descripcion"+i+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='t1chkdigital"+i+"'  value='digital' type='checkbox'/></td>"+
-                               "<td><input name='t1chkdigital"+i+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t1chkdigital"+i+"'  value='' type='checkbox'/></td>"+
+                               "<td><input name='t1chkimpreso"+i+"'  value='' type='checkbox'/></td>"+
                                "<td><input name='t1cantidad"+i+"' type='text' class='form-control'/></td>");
 
 
@@ -294,8 +313,8 @@
                 
                 $('#t2addr'+j).html("<td><input value='"+ (j + 1) +"' type='text' class='form-control'/></td>"+
                                "<td><input name='t2descripcion"+j+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='t2chkdigital"+j+"'  value='digital' type='checkbox'/></td>"+
-                               "<td><input name='t2chkdigital"+j+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t2chkdigital"+j+"'  value='' type='checkbox'/></td>"+
+                               "<td><input name='t2chkimpreso"+j+"'  value='' type='checkbox'/></td>"+
                                "<td><input name='t2cantidad"+j+"' type='text' class='form-control'/></td>");
 
 

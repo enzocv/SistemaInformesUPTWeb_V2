@@ -113,17 +113,22 @@ public class GuardarPortafolio extends HttpServlet {
         /*FIN DE OBTENER CARGAACADEMICA*/
         
         /*GUARDAR CABECERA PORTAFOLIO*/
-//        ClsEntidadPortafolio entiPortafolio = new ClsEntidadPortafolio();
-//        ClsNegocioPortafolio negPortafolio = new ClsNegocioPortafolio();
-//        
-//        entiPortafolio.setIdCargaAcademica(Integer.parseInt(idCargaAcademica));
-//        entiPortafolio.setEstadoPortafolio(estado);
-//        entiPortafolio.setEstudianteAsisten(Integer.parseInt( Asiste ) );
-//        entiPortafolio.setEstudianteAprobado(Integer.parseInt( Aprobado ));
-//        entiPortafolio.setEstudianteDesaprobado(Integer.parseInt(Desaprobado));
-//        entiPortafolio.setRecepcioadoPor(revisado);
-//
-//        negPortafolio.AgregarPortafolio(entiPortafolio);
+        ClsEntidadPortafolio entiPortafolio = new ClsEntidadPortafolio();
+        ClsNegocioPortafolio negPortafolio = new ClsNegocioPortafolio();
+        
+        entiPortafolio.setIdCargaAcademica(Integer.parseInt(idCargaAcademica));
+        entiPortafolio.setEstadoPortafolio(estado);
+        entiPortafolio.setEstudianteAsisten(Integer.parseInt( Asiste ) );
+        entiPortafolio.setEstudianteAprobado(Integer.parseInt( Aprobado ));
+        entiPortafolio.setEstudianteDesaprobado(Integer.parseInt(Desaprobado));
+        entiPortafolio.setRecepcioadoPor(revisado);
+
+        negPortafolio.AgregarPortafolio(entiPortafolio);
+        
+        ClsNegocioPortafolioMaterialDocente negoMaterialDocente2 =  new ClsNegocioPortafolioMaterialDocente();
+        
+        ArrayList<String> idinfo = negoMaterialDocente2.obtenerInfoFinalDocente(codDocente,id_Curso);
+        String id[] = idinfo.toArray(new String[idinfo.size()]);
         
         /*FIN GUARDAR CABECERA PORTAFOLIO*/
 //        out.println(Asiste);
@@ -133,8 +138,9 @@ public class GuardarPortafolio extends HttpServlet {
         
         /* RECIBIR DATOS DE CAPACIDADES */
         ArrayList<String> datosTabla1 = new ArrayList<>();
-//        ArrayList<String> datosMedidasCorrectivas = new ArrayList<>();
+        ArrayList<String> datosTabla2 = new ArrayList<>();
 
+        /*DATOS DE TABLA 1*/
         Enumeration parameterList = request.getParameterNames();
         while( parameterList.hasMoreElements() )
         {
@@ -143,6 +149,18 @@ public class GuardarPortafolio extends HttpServlet {
             datosTabla1.add(request.getParameter(sName));
           }
         }
+        /*FIN DATOS TABLA 1*/
+        
+        /*DATOS TABLA 2*/
+        Enumeration parameterList2 = request.getParameterNames();
+        while( parameterList2.hasMoreElements() )
+        {
+          String sName = parameterList2.nextElement().toString();
+          if(sName.toLowerCase().startsWith("t2")){
+            datosTabla2.add(request.getParameter(sName));
+          }
+        }
+        /*FIN DATOS TABLA 2*/
         
         ClsEntidadPortafolioMaterialDocente entiMaterialDocente = new ClsEntidadPortafolioMaterialDocente();
         ClsNegocioPortafolioMaterialDocente negoMaterialDocente =  new ClsNegocioPortafolioMaterialDocente();
@@ -150,42 +168,75 @@ public class GuardarPortafolio extends HttpServlet {
         ClsEntidadPortafolioMaterialEstudiante entiMaterialEstudiante = new ClsEntidadPortafolioMaterialEstudiante();
         ClsNegocioPortafolioMaterialEstudiante negoMaterialEstudiante =  new ClsNegocioPortafolioMaterialEstudiante();
 
-//        ArrayList<String> idinfo = negoMaterialDocente.obtenerInfoFinalDocente(id_Curso,codDocente);
+//        ArrayList<String> idinfo = negoMaterialDocente.obtenerInfoFinalDocente(codDocente,id_Curso);
 //        String id[] = idinfo.toArray(new String[idinfo.size()]);
 
-        for (int i = 0; i < datosTabla1.size(); i+=3) {
-            entiMaterialDocente.setIdPortafolio(Integer.parseInt( idCargaAcademica ));
+        for (int i = 0; i < datosTabla1.size(); i+=4) {
+            entiMaterialDocente.setIdPortafolio(Integer.parseInt( id[0] ));
             entiMaterialDocente.setMaterial(datosTabla1.get(i));
-            String digi = datosTabla1.get(i+1).equals("digital") && datosTabla1.get(i+1) != null  ? "Si":"No";
-            String impre = datosTabla1.get(i+2).equals("impreso") && datosTabla1.get(i+2) != null ? "Si":"No";
+            String digi = datosTabla1.get(i+1).equals("1") && datosTabla1.get(i+1) != null  ? "Si":"No";
+            String impre = datosTabla1.get(i+2).equals("1") && datosTabla1.get(i+2) != null ? "Si":"No";
             boolean digital = false;
             boolean impreso = false;
             if (digi.equals("Si")) digital = true;
             if (impre.equals("Si")) impreso = true;
             
-            out.println("T:"+datosTabla1.size());
-            out.println("D:"+datosTabla1.get(i));
-            out.println("DI:"+ datosTabla1.get(i+1) );
-            out.println("IM:"+ datosTabla1.get(i+2) );
-            out.println("CAN"+datosTabla1.get(i+3));
-            out.println("BO DI"+ digi  );
-            out.println("BO IM"+ impre );
-            out.println("=================");
+//            out.println("========= T1 ========");
+//            out.println("Total: "+datosTabla1.size());
+//            out.println("Descripcion: "+datosTabla1.get(i));
+//            out.println("Digital: "+ datosTabla1.get(i+1) );
+//            out.println("Impreso: "+ datosTabla1.get(i+2) );
+//            out.println("Cantidad: "+datosTabla1.get(i+3));
+//            out.println("boolean digital: "+ digital  );
+//            out.println("boolean impreso: "+ impreso );
+//            out.println("=================");
             
-//            entiMaterialDocente.setDigital( digital );
-//            entiMaterialDocente.setImpreso( impreso );
-//            entiMaterialDocente.setCantidad( Integer.parseInt(datosTabla1.get(i+3)) );
+            entiMaterialDocente.setDigital( digital );
+            entiMaterialDocente.setImpreso( impreso );
+            entiMaterialDocente.setCantidad( Integer.parseInt(datosTabla1.get(i+3)) );
+            
+            negoMaterialDocente.AgregarDetallePortafolioMaterialDocente(entiMaterialDocente);
+        }
+
+        for (int j = 0; j < datosTabla2.size(); j+=4) {
+            entiMaterialEstudiante.setIdPortafolio(Integer.parseInt( id[0] ));
+            entiMaterialEstudiante.setMaterial(datosTabla2.get(j));
 //            
-//            negoMaterialDocente.AgregarDetallePortafolioMaterialDocente(entiMaterialDocente);
+            String digi2 = datosTabla2.get(j+1).equals("1") && datosTabla2.get(j+1) != null  ? "Si":"No";
+            String impre2 = datosTabla2.get(j+2).equals("1") && datosTabla2.get(j+2) != null ? "Si":"No";
+            boolean digital2 = false;
+            boolean impreso2 = false;
+            if (digi2.equals("Si")) digital2 = true;
+            if (impre2.equals("Si")) impreso2 = true;
+//            out.println("========= T2 ========");
+//            out.println("Total: "+datosTabla2.size());
+//            out.println("Descripcion: "+datosTabla2.get(j));
+//            out.println("Digital: "+ datosTabla2.get(j+1) );
+//            out.println("Impreso: "+ datosTabla2.get(j+2) );
+//            out.println("Cantidad: "+datosTabla2.get(j+3));
+//            out.println("boolean digital: "+ digital2  );
+//            out.println("boolean impreso: "+ impreso2 );
+//            out.println("=================");
+            
+            entiMaterialEstudiante.setDigital( digital2 );
+            entiMaterialEstudiante.setImpreso( impreso2 );
+            entiMaterialEstudiante.setCantidad( Integer.parseInt(datosTabla2.get(j+3)) );
+            
+            negoMaterialEstudiante.AgregarDetallePortafolioMaterialEstudiante(entiMaterialEstudiante);
         }
 
         try {
             negoMaterialDocente.cst.close();
             negoMaterialDocente.conexion.close();
+            
+            negoMaterialEstudiante.cst.close();
+            negoMaterialEstudiante.conexion.close();
+            
+                   
         } catch (SQLException ex) {
             Logger.getLogger(GuardarPortafolio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        response.sendRedirect("reportesFaltantes.jsp");
     }
 
     /**
