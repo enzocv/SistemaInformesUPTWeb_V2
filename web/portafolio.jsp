@@ -33,7 +33,7 @@
         <div class="container body-padding">
             <div class="row">
                 <div class="form-reporte shadow">
-                    <form class="" method="post" action="">
+                    <form class="" method="post" action="GuardarPortafolio">
                         <fieldset>
                             <div class="form-group">
                                 <div class="sub-title">  
@@ -46,9 +46,9 @@
                                     <label class="col-lg-2 ">Codigo :</label>
                                     <div class="col-lg-4">
                                         <% if(datosCabecera != null) {%>
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datosCabecera[0]%>'>
+                                        <input type="text" name="idCurso" class="form-control input-sm" id="" value='<%=datosCabecera[0]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="idCurso" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                     </div>                      
                                 </div>
@@ -57,9 +57,9 @@
                                     <label class="col-lg-2 ">Nombre :</label>
                                     <div class="col-lg-4">
                                          <% if(datosCabecera != null) {%>
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datosCabecera[1]%>'>
+                                        <input type="text" class="form-control input-sm" id="" value='<%=datosCabecera[1]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" class="form-control input-sm" id="" value=''>
+                                        <input type="text" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                     </div>                      
                                 </div>
@@ -68,9 +68,9 @@
                                     <label class="col-lg-2 ">Docente :</label>
                                     <div class="col-lg-4">
                                          <% if(datosCabecera != null) {%>
-                                        <input type="text" class="form-control input-sm" id="" value='<%=datosCabecera[2]%>'>
+                                        <input type="text" name="nombre" class="form-control input-sm" id="" value='<%=datosCabecera[2]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" class="form-control input-sm" id="" value=''>
+                                        <input type="text" class="form-control input-sm" id="" value='' disabled >
                                         <% } %>
                                     </div>                      
                                 </div>
@@ -97,66 +97,67 @@
                                     <label class="col-lg-5 ">Matriculados</label>
                                     <div class="col-lg-1">
                                         <% if(datosCabecera != null) {%>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='<%=datosCabecera[3]%>' disabled>
+                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='<%=datosCabecera[3]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="estMatricu" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeMatriculados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Retirados</label>
                                     <div class="col-lg-1">
                                         <% if(datosCabecera != null) {%>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='<%=datosCabecera[4]%>' disabled>
+                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='<%=datosCabecera[4]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="estReti" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                    </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeRetirados" class="form-control input-sm" id="" value='' disabled>
                                    </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Abandono</label>
                                     <div class="col-lg-1">
                                         <% if(datosCabecera != null) {%>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='<%=datosCabecera[5]%>' disabled>
+                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='<%=datosCabecera[5]%>' disabled>
                                         <% } else { %>
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="estAbando" class="form-control input-sm" id="" value='' disabled>
                                         <% } %>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeAbandono" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Asisten</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' >
+                                        <input type="text" name="estAsiste" class="form-control input-sm" id="" value='' disabled />
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
+                                    <input type="hidden" name="asiste" id="asiste" value=''>
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Aprobados</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="estAprobado" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeAprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Desaprobados</label>
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value=''>
+                                        <input type="text" name="estDesapro" class="form-control input-sm" id="" value=''>
                                     </div>  
                                     <div class="col-lg-1">
-                                        <input type="text" name="" class="form-control input-sm" id="" value='' disabled>
+                                        <input type="text" name="porcentajeDesaprobados" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
                                 </div>                 
                             </div>    
@@ -177,22 +178,18 @@
                                     <table class="table table-striped table-responsive table-prueba-entrada" id="tab1_logic">
                                         <thead>
                                             <th class="col-md-1">#</th>
-                                            <th class="col-md-6">Capacidades del curso</th>
-                                            <th class="col-md-1">N</th>
-                                            <th class="col-md-1">P</th>
-                                            <th class="col-md-1">A</th>
-                                            <th class="col-md-1">B</th>
-                                            <th class="col-md-1">M</th>
+                                            <th class="col-md-6">Material Docente Integrado</th>
+                                            <th class="col-md-1">Digital</th>
+                                            <th class="col-md-1">Impreso</th>
+                                            <th class="col-md-1">Cantidad</th>
                                         </thead>
                                         <tbody>
                                             <tr id='t1addr0'>
                                                 <td><input name="" value="1" type="text" class="form-control"/></td>
-                                                <td><input name="detalledescripcionCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallenadaCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallepocoCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detalleaceptableCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallebienCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallemuyBienCapa" value="" type="text" class="form-control"/></td>
+                                                <td><input name="t1descripcion" value="" type="text" class="form-control"/></td>
+                                                <td><input type="checkbox" name="t1chkdigital" value="digital"/></td>
+                                                <td><input type="checkbox" name="t1chkimpreso" value="impreso"/></td>
+                                                <td><input name="t1cantidad"    value="" type="text" class="form-control"/></td>
                                             </tr>
                                             <tr id='t1addr1'></tr>
                                             
@@ -213,22 +210,18 @@
                                     <table class="table table-striped table-responsive table-prueba-entrada" id="tab2_logic">
                                         <thead>
                                             <th class="col-md-1">#</th>
-                                            <th class="col-md-6">Capacidades del curso</th>
-                                            <th class="col-md-1">N</th>
-                                            <th class="col-md-1">P</th>
-                                            <th class="col-md-1">A</th>
-                                            <th class="col-md-1">B</th>
-                                            <th class="col-md-1">M</th>
+                                            <th class="col-md-6">Material Integrado</th>
+                                            <th class="col-md-1">Digital</th>
+                                            <th class="col-md-1">Impreso</th>
+                                            <th class="col-md-1">Cantidad</th>
                                         </thead>
                                         <tbody>
                                             <tr id='t2addr0'>
-                                                <td><input name="" value="1" type="text" class="form-control"/></td>
-                                                <td><input name="detalledescripcionCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallenadaCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallepocoCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detalleaceptableCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallebienCapa" value="" type="text" class="form-control"/></td>
-                                                <td><input name="detallemuyBienCapa" value="" type="text" class="form-control"/></td>
+                                                <td><input name=""              value="1" type="text" class="form-control"/></td>
+                                                <td><input name="t2descripcion" value="" type="text" class="form-control"/></td>
+                                                <td><input name="t2chkdigital"  value="digital" type="checkbox"/></td>
+                                                <td><input name="t2chkimpreso"  value="impreso" type="checkbox"/></td>
+                                                <td><input name="t2cantidad"    value="" type="text" class="form-control"/></td>
                                             </tr>
                                             <tr id='t2addr1'></tr>
                                             
@@ -242,7 +235,7 @@
                                 <br><br>
                                 <div class="form-group">
                                     <label>Revisado Por:</label>
-                                    <input type="text" name="" value="" class="form-control"/>
+                                    <input type="text" name="caRevisadoPor" value="" class="form-control"/>
                                 </div> 
                                 <br><br>
                                 
@@ -262,7 +255,7 @@
                             <div class="form-group">
                                 <p></p>
                             </div>
-
+                                <input type="hidden" name="idcurso" value="<%=datosCabecera[0]%>"/>
                         </fieldset>
                     </form>
                 </div>
@@ -275,12 +268,10 @@
             $("#t1add_row").click(function(){
                 
                 $('#t1addr'+i).html("<td><input value='"+ (i + 1) +"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detalledescripcionCapa"+i+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallenadaCapa"+i+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallepocoCapa"+i+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detalleaceptableCapa"+i+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallebienCapa"+i+"' type='text' class='form-control'/></td>" +
-                               "<td><input name='detallemuyBienCapa"+i+"' type='text' class='form-control'/></td>");
+                               "<td><input name='t1descripcion"+i+"' type='text' class='form-control'/></td>"+
+                               "<td><input name='t1chkdigital"+i+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t1chkdigital"+i+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t1cantidad"+i+"' type='text' class='form-control'/></td>");
 
 
                 $('#tab1_logic').append('<tr id="t1addr'+(i+1)+'"></tr>');
@@ -302,12 +293,10 @@
             $("#t2add_row").click(function(){
                 
                 $('#t2addr'+j).html("<td><input value='"+ (j + 1) +"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detalledescripcionCapa"+j+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallenadaCapa"+j+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallepocoCapa"+j+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detalleaceptableCapa"+j+"' type='text' class='form-control'/></td>"+
-                               "<td><input name='detallebienCapa"+j+"' type='text' class='form-control'/></td>" +
-                               "<td><input name='detallemuyBienCapa"+j+"' type='text' class='form-control'/></td>");
+                               "<td><input name='t2descripcion"+j+"' type='text' class='form-control'/></td>"+
+                               "<td><input name='t2chkdigital"+j+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t2chkdigital"+j+"'  value='digital' type='checkbox'/></td>"+
+                               "<td><input name='t2cantidad"+j+"' type='text' class='form-control'/></td>");
 
 
                 $('#tab2_logic').append('<tr id="t2addr'+(j+1)+'"></tr>');
@@ -337,14 +326,16 @@
                         $("input[name=porcentajeMatriculados]").val(0);
                     }
                     if ($("input[name=estReti]").val() !== "" && $("input[name=estAbando]").val() !== "" &&
-                        $("input[name=estAsiste]").val() !== "" && $("input[name=estAprobado]").val() !== "" &&
+                        $("input[name=estAprobado]").val() !== "" &&
                         $("input[name=estDesapro]").val() !== "") {
 
                         var retirados = parseFloat( $("input[name=estReti]").val() );
                         var abandono = parseFloat(  $("input[name=estAbando]").val() );
-                        var asisten = parseFloat( $("input[name=estAsiste]").val() );
                         var aprobados = parseFloat( $("input[name=estAprobado]").val() );
                         var desaprobados = parseFloat( $("input[name=estDesapro]").val() );
+                        $("input[name=estAsiste]").val(aprobados+desaprobados);
+                        $("input[name=asiste]").val(aprobados+desaprobados);
+                        var asisten = parseFloat( $("input[name=estAsiste]").val() );
                         
                         var eva = aprobados + desaprobados;
 
