@@ -6,12 +6,19 @@
 package Servlets;
 
 import Entidad.ClsEntidadPortafolio;
+import Entidad.ClsEntidadPortafolioMaterialDocente;
+import Entidad.ClsEntidadPortafolioMaterialEstudiante;
 import Negocio.ClsNegocioInformeFinalCurso;
 import Negocio.ClsNegocioPortafolio;
+import Negocio.ClsNegocioPortafolioMaterialDocente;
+import Negocio.ClsNegocioPortafolioMaterialEstudiante;
 import Negocio.ClsNegocioUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -106,23 +113,78 @@ public class GuardarPortafolio extends HttpServlet {
         /*FIN DE OBTENER CARGAACADEMICA*/
         
         /*GUARDAR CABECERA PORTAFOLIO*/
-        ClsEntidadPortafolio entiPortafolio = new ClsEntidadPortafolio();
-        ClsNegocioPortafolio negPortafolio = new ClsNegocioPortafolio();
-        
-        entiPortafolio.setIdCargaAcademica(Integer.parseInt(idCargaAcademica));
-        entiPortafolio.setEstadoPortafolio(estado);
-        entiPortafolio.setEstudianteAsisten(Integer.parseInt( Asiste ) );
-        entiPortafolio.setEstudianteAprobado(Integer.parseInt( Aprobado ));
-        entiPortafolio.setEstudianteDesaprobado(Integer.parseInt(Desaprobado));
-        entiPortafolio.setRecepcioadoPor(revisado);
-
-        negPortafolio.AgregarPortafolio(entiPortafolio);
+//        ClsEntidadPortafolio entiPortafolio = new ClsEntidadPortafolio();
+//        ClsNegocioPortafolio negPortafolio = new ClsNegocioPortafolio();
+//        
+//        entiPortafolio.setIdCargaAcademica(Integer.parseInt(idCargaAcademica));
+//        entiPortafolio.setEstadoPortafolio(estado);
+//        entiPortafolio.setEstudianteAsisten(Integer.parseInt( Asiste ) );
+//        entiPortafolio.setEstudianteAprobado(Integer.parseInt( Aprobado ));
+//        entiPortafolio.setEstudianteDesaprobado(Integer.parseInt(Desaprobado));
+//        entiPortafolio.setRecepcioadoPor(revisado);
+//
+//        negPortafolio.AgregarPortafolio(entiPortafolio);
         
         /*FIN GUARDAR CABECERA PORTAFOLIO*/
-        out.println(Asiste);
-        out.println(Aprobado);
-        out.println(Desaprobado);
-        out.println(revisado);
+//        out.println(Asiste);
+//        out.println(Aprobado);
+//        out.println(Desaprobado);
+//        out.println(revisado);
+        
+        /* RECIBIR DATOS DE CAPACIDADES */
+        ArrayList<String> datosTabla1 = new ArrayList<>();
+//        ArrayList<String> datosMedidasCorrectivas = new ArrayList<>();
+
+        Enumeration parameterList = request.getParameterNames();
+        while( parameterList.hasMoreElements() )
+        {
+          String sName = parameterList.nextElement().toString();
+          if(sName.toLowerCase().startsWith("t1")){
+            datosTabla1.add(request.getParameter(sName));
+          }
+        }
+        
+        ClsEntidadPortafolioMaterialDocente entiMaterialDocente = new ClsEntidadPortafolioMaterialDocente();
+        ClsNegocioPortafolioMaterialDocente negoMaterialDocente =  new ClsNegocioPortafolioMaterialDocente();
+
+        ClsEntidadPortafolioMaterialEstudiante entiMaterialEstudiante = new ClsEntidadPortafolioMaterialEstudiante();
+        ClsNegocioPortafolioMaterialEstudiante negoMaterialEstudiante =  new ClsNegocioPortafolioMaterialEstudiante();
+
+//        ArrayList<String> idinfo = negoMaterialDocente.obtenerInfoFinalDocente(id_Curso,codDocente);
+//        String id[] = idinfo.toArray(new String[idinfo.size()]);
+
+        for (int i = 0; i < datosTabla1.size(); i+=3) {
+            entiMaterialDocente.setIdPortafolio(Integer.parseInt( idCargaAcademica ));
+            entiMaterialDocente.setMaterial(datosTabla1.get(i));
+            String digi = datosTabla1.get(i+1).equals("digital") && datosTabla1.get(i+1) != null  ? "Si":"No";
+            String impre = datosTabla1.get(i+2).equals("impreso") && datosTabla1.get(i+2) != null ? "Si":"No";
+            boolean digital = false;
+            boolean impreso = false;
+            if (digi.equals("Si")) digital = true;
+            if (impre.equals("Si")) impreso = true;
+            
+            out.println("T:"+datosTabla1.size());
+            out.println("D:"+datosTabla1.get(i));
+            out.println("DI:"+ datosTabla1.get(i+1) );
+            out.println("IM:"+ datosTabla1.get(i+2) );
+            out.println("CAN"+datosTabla1.get(i+3));
+            out.println("BO DI"+ digi  );
+            out.println("BO IM"+ impre );
+            out.println("=================");
+            
+//            entiMaterialDocente.setDigital( digital );
+//            entiMaterialDocente.setImpreso( impreso );
+//            entiMaterialDocente.setCantidad( Integer.parseInt(datosTabla1.get(i+3)) );
+//            
+//            negoMaterialDocente.AgregarDetallePortafolioMaterialDocente(entiMaterialDocente);
+        }
+
+        try {
+            negoMaterialDocente.cst.close();
+            negoMaterialDocente.conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(GuardarPortafolio.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
