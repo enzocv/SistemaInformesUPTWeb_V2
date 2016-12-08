@@ -7,7 +7,7 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${reference.SistemaInformesUPT.jar}</file>
+                    <file>${reference.SistemaInformesUPT-1.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
@@ -64,7 +64,6 @@
                 </library>
                 <library dirs="200">
                     <file>${file.reference.itextpdf-5.2.1.jar}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.jasperreports-3.7.3.jar}</file>
@@ -97,7 +96,7 @@
         </data>
         <references xmlns="http://www.netbeans.org/ns/ant-project-references/1">
             <reference>
-                <foreign-project>SistemaInformesUPT</foreign-project>
+                <foreign-project>SistemaInformesUPT-1</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>jar</target>
