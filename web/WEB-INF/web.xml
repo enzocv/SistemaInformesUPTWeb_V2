@@ -31,6 +31,10 @@
     <servlet>
         <servlet-name>cambiarEstadoUnidad</servlet-name>
         <servlet-class>Servlets.cambiarEstadoUnidad</servlet-class>
+	</servlet>
+    <servlet>
+        <servlet-name>TraerDatosCompletosPortafolio</servlet-name>
+        <servlet-class>Servlets.TraerDatosCompletosPortafolio</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GuardarInfoFinal</servlet-name>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>cambiarEstadoUnidad</servlet-name>
         <url-pattern>/cambiarEstadoUnidad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TraerDatosCompletosPortafolio</servlet-name>
+        <url-pattern>/TraerDatosCompletosPortafolio</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

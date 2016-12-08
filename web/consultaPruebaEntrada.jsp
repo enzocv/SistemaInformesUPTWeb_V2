@@ -218,7 +218,7 @@
                                                                 <td> <a href="BucarInfoFinal?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe F</a></td>
                                                             <% } 
                                                             else if(tipoInfo.equals("Portafolio")) {%>
-                                                                <td> <a href="portafolio.jsp?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
+                                                                <td> <a href="TraerDatosCompletosPortafolio?id_Portafolio=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
                                                             <% } %>
                                                         </tr>
                                                         <%
