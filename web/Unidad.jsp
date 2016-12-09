@@ -65,7 +65,7 @@
                                                 desactivo = "selected";
                                             }
                                         %>
-                                            <select name="estadoUnidad" class="form-control "onchange="this.form.submit()" >
+                                            <select name="estadoUnidad" class="form-control " onchange="this.form.submit()" >
                                                 <option value="Activo"      <%=activo%>    id="estado"> Activo      </option>
                                                 <option value="Inactivo"    <%=inactivo%>  id="estado"> Inactivo    </option>
                                                 <option value="Desactivado" <%=desactivo%> id="estado"> Desactivado </option>

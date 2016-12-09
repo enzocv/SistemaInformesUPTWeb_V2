@@ -72,6 +72,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="imprimirReporte.jsp">Imprimir informes aprobados</a></li>
+                                <%
+                                    if(session.getAttribute("nivelUsuario")!=null)
+                                    {
+                                        if (session.getAttribute("nivelUsuario").equals("Administrador") || session.getAttribute("nivelUsuario").equals("Supervisor"))
+                                        {
+                                %>   
+                                        <li><a href="imprimirReporteCiclos.jsp">Reportes Por Ciclo</a></li>
+                                <%
+                                        }
+                                    }%>
                             </ul>                    
                         </li>
                         <li class="dropdown">
