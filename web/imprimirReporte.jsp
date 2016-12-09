@@ -351,11 +351,12 @@
                                                                         else if(tipoInforme.equals("Final")){
                                                                     %>
                                                                             <a href="ReporteInformeFinal.jsp?id_InformeFinal=<%=DatosPruebaEntradaUsuario.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
-                                                                    <%
-                                                                        }
+                                                                    <% } 
+                                                                        else if (tipoInforme.equals("Portafolio")){
                                                                     %>
-                                                                    
-                                                                    
+                                                                            <a href="ReportePortafolio.jsp?id_Portafolio=<%=DatosPruebaEntradaUsuario.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
+                                                                    <% }
+                                                                    %>
                                                                 </td>
                                                             </tr>
                                                         <%
@@ -388,7 +389,7 @@
                                                                         }
                                                                         else if(tipoInforme.equals("Portafolio")){
                                                                     %>
-                                                                            <a href="ReportePortafolio.jsp?id_InformeFinal=<%=DatosPruebaEntradaAdministrador.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
+                                                                            <a href="ReportePortafolio.jsp?id_Portafolio=<%=DatosPruebaEntradaAdministrador.get(i)%>" class="btn btn-info btn-xs btn-controles">Imprimir informe</a>
                                                                     <%
                                                                         }
                                                                     %>

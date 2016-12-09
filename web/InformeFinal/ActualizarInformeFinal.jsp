@@ -91,6 +91,7 @@
 
                                     <label class="col-lg-2 ">Código :</label>
                                     <div class="col-lg-3">
+                                        <input type="hidden"  name="idCurso" id="" value='<%=datos2[0]%>'>
                                         <input type="text" class="form-control input-sm"  name="idCurso" id="" value='<%=datos2[0]%>' disabled>
                                     </div>
 

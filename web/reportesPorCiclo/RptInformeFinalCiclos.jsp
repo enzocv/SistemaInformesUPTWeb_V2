@@ -26,6 +26,7 @@
 <%@page import="java.io.File"%>
 <%@page import="Conexion.ClsConexion"%>
 <%@page import="java.sql.Connection"%>
+<%@include file="header.jsp" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

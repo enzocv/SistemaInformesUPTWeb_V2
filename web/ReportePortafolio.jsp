@@ -13,7 +13,7 @@
 
 
 <%
-    String id_InformeFinal = request.getParameter("id_InformeFinal");
+    String id_InformeFinal = request.getParameter("id_Portafolio");
 %>
 <head>
     <title>Imprimir Reportes</title>
@@ -46,7 +46,7 @@
                     %>
                     <div class="container full-height" id="documento">
                         <div class="row form-reporte shadow full-height">
-                            <embed class="reporte" src="RptPortafolio.jsp?doctype=pdf&id_InformeFinal=<%=id_InformeFinal%>" width="100%" height="100%" type='application/pdf'>
+                            <embed class="reporte" src="RptPortafolio.jsp?doctype=pdf&id_Portafolio=<%=id_InformeFinal%>" width="100%" height="100%" type='application/pdf'>
                         </div>
                     </div>
                     <%
@@ -55,7 +55,7 @@
                     %>
                     <div class="container full-height" id="documento">
                         <div class="row form-reporte shadow full-height">
-                            <object width="100%" height="100%" class="container" type="text/html" data="RptPortafolio.jsp?doctype=html&id_InformeFinal=<%=id_InformeFinal%>">
+                            <object width="100%" height="100%" class="container" type="text/html" data="RptPortafolio.jsp?doctype=html&id_Portafolio=<%=id_InformeFinal%>">
                             <p>backup content</p>
                             </object>
                         </div>
@@ -65,7 +65,7 @@
                 else if(tipo.equals("xls")){
                     %>
                     <div class="container">
-                        <embed class="reporte" src="RptPortafolio.jsp?doctype=xls&id_InformeFinal=<%=id_InformeFinal%>" width="100%" height="100%" type='text/html'>
+                        <embed class="reporte" src="RptPortafolio.jsp?doctype=xls&id_Portafolio=<%=id_InformeFinal%>" width="100%" height="100%" type='text/html'>
                     </div>
                     <%
                 }
