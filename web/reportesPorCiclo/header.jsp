@@ -40,7 +40,7 @@
                                 Informes<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="reportesFaltantes.jsp">Ver informes restantes</a></li>
+                                <li><a href="../reportesFaltantes.jsp">Ver informes restantes</a></li>
                             </ul>                    
                         </li>
                         <li class="dropdown">
@@ -48,19 +48,19 @@
                                 Consultas<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="consultaPruebaEntrada.jsp">Consulta Informes</a></li>
+                                <li><a href="../consultaPruebaEntrada.jsp">Consulta Informes</a></li>
                                 <%
                                     if(session.getAttribute("nivelUsuario")!=null)
                                     {
                                         if (session.getAttribute("nivelUsuario").equals("Administrador") || session.getAttribute("nivelUsuario").equals("Supervisor"))
                                         {
                                 %>   
-                                        <li><a href="ControlInformes.jsp?Informe=Prueba+Entrada&Buscar=Buscar&tabla_length=20">Control de Informes</a></li>
-                                        <li><a href="Unidad.jsp">Control de Unidad</a></li>
+                                        <li><a href="../ControlInformes.jsp?Informe=Prueba+Entrada&Buscar=Buscar&tabla_length=20">Control de Informes</a></li>
+                                        <li><a href="../Unidad.jsp">Control de Unidad</a></li>
                                 <%
                                         }
                                         else {%>
-                                        <li><a href="ControlInformeCursos.jsp">Consulta Informes Por Cursos</a></li>
+                                        <li><a href="../ControlInformeCursos.jsp">Consulta Informes Por Cursos</a></li>
                                         <% }
                                     }
                                 %>
@@ -71,14 +71,14 @@
                                 Imprimir<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="imprimirReporte.jsp">Imprimir informes aprobados</a></li>
+                                <li><a href="../imprimirReporte.jsp">Imprimir informes aprobados</a></li>
                                 <%
                                     if(session.getAttribute("nivelUsuario")!=null)
                                     {
                                         if (session.getAttribute("nivelUsuario").equals("Administrador") || session.getAttribute("nivelUsuario").equals("Supervisor"))
                                         {
                                 %>   
-                                        <li><a href="imprimirReporteCiclos.jsp">Reportes Por Ciclo</a></li>
+                                        <li><a href="../imprimirReporteCiclos.jsp">Reportes Por Ciclo</a></li>
                                 <%
                                         }
                                     }%>
@@ -97,10 +97,10 @@
                         {
                     %>   
                         <li><a href="#" id="loginlink">Bienvenido: <%=session.getAttribute("nombreDocente")%></a></li>
-                        <li><a href="cerrarSession.jsp" id="loginlink">Cerrar sesión</a></li>
+                        <li><a href="../cerrarSession.jsp" id="loginlink">Cerrar sesión</a></li>
                     <%          
                         }else{ %>
-                        <li><a href="login.jsp" id="loginlink">No ha iniciado sesión</a></li>
+                        <li><a href="../login.jsp" id="loginlink">No ha iniciado sesión</a></li>
                     <%
                         }
                     %>                    

@@ -3,7 +3,7 @@
     Created on : 08-dic-2016, 20:54:06
     Author     : enzocv
 --%>
-<%@include file="../header.jsp" %>
+<%@include file="header.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>

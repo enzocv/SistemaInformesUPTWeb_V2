@@ -25,7 +25,7 @@
 <%
 //    Connection cnx = null;
     String doctype = request.getParameter("doctype");
-    String id_InformeFinal = request.getParameter("id_InformeFinal");
+    String id_InformeFinal = request.getParameter("id_Portafolio");
     Connection cnx = null;
     Map p = new HashMap();
     p.put("ID", Integer.parseInt(id_InformeFinal));
