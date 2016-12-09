@@ -103,8 +103,16 @@
                                                     <th>Curso</th>
                                                     <th>Fecha</th>
                                                     <th>Estado</th>
-                                                    <th>Control</th>
+                                                                                                       
                                                     <% 
+                                                    if (request.getParameter("Buscar")!=null) {
+                                                        String tipoInfo = request.getParameter("Informe");
+                                                        if (tipoInfo.equals("Portafolio")) {
+                                                            %>
+                                                            <th>Unidad</th>
+                                                            <%
+                                                        }                                                        
+                                                    }
                                                 }
                                                 else if(nivelUsuario.equals("Supervisor") || nivelUsuario.equals("Administrador")){
                                                     %>
@@ -116,10 +124,19 @@
                                                     <th>Curso</th>
                                                     <th>Fecha</th>
                                                     <th>Estado</th>
-                                                    <th>Control</th>
+                                                    
                                                     <%
+                                                        if (request.getParameter("Buscar")!=null) {
+                                                        String tipoInfo = request.getParameter("Informe");
+                                                        if (tipoInfo.equals("Portafolio")) {
+                                                            %>
+                                                            <th>Unidad</th>
+                                                            <%
+                                                        }                                                        
+                                                    }
                                                 }
                                             %>
+                                                    <th>Control</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -150,6 +167,7 @@
                                                             <td> <%= rs.getString(3)%> </td>
                                                             <td> <%= rs.getString(4)%> </td>
                                                             <td> <%= rs.getString(5)%> </td>
+                                                            <td> <%= rs.getString(6)%> </td>
                                                             <%if(tipoInfo.equals("Entrada")){%>
                                                                 <td> <a href="pruebaEntrada.jsp?id_PruebaEntrada=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe E</a></td>
                                                             <% } 
@@ -157,7 +175,7 @@
                                                                 <td> <a href="BucarInfoFinal?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe F</a></td>
                                                             <% } 
                                                             else if(tipoInfo.equals("Portafolio")) {%>
-                                                                <td> <a href="portafolio?id_Final=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
+                                                                <td> <a href="TraerDatosCompletosPortafolio?id_Portafolio=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe P</a></td>
                                                             <% } %>
                                                             
                                                         </tr>
@@ -211,6 +229,7 @@
                                                             <td> <%= rs.getString(6)%> </td>
                                                             <td> <%= rs.getString(7)%> </td>
                                                             <td> <%= rs.getString(8)%> </td>
+                                                            <td> <%= rs.getString(9)%> </td>
                                                             <%if(tipoInfo.equals("Entrada")){%>
                                                                 <td> <a href="pruebaEntrada.jsp?id_PruebaEntrada=<%= rs.getString(1)%>" class="btn btn-success btn-xs btn-controles">Ver Informe E</a></td>
                                                             <% } 

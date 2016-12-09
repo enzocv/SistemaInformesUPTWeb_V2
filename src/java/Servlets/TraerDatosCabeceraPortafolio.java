@@ -77,7 +77,7 @@ public class TraerDatosCabeceraPortafolio extends HttpServlet {
             Iterator iterator = dato.iterator();
 
 
-            String campo[] = new String[6];
+            String campo[] = new String[8];
 
             while (iterator.hasNext()) {
                 ClsEntidadPruebaCursosFaltantes objenti = new ClsEntidadPruebaCursosFaltantes();
@@ -90,6 +90,8 @@ public class TraerDatosCabeceraPortafolio extends HttpServlet {
                 campo[3] = String.valueOf(objenti.getAlumnosMatriculados());
                 campo[4] = String.valueOf(objenti.getAlumnosRetirados());
                 campo[5] = String.valueOf(objenti.getAlumnosAbandono());
+                campo[6] = String.valueOf(objenti.getIdUnidad());
+                campo[7] = String.valueOf(objenti.getDescripcionUnidad());
 
             }
         

@@ -39,9 +39,30 @@
                                 <div class="sub-title">  
                                     <h2>Informe Final de Portafolio</h2>
                                     <br>
+                                    <% 
+                                        String nombreUnidad = "";
+                                        if(datosCabecera != null) {
+                                        switch(datosCabecera[6]){
+                                        case "0":
+                                            nombreUnidad = "Unidad I";
+                                            break;
+                                        case "1":
+                                            nombreUnidad = "Unidad II";
+                                            break;
+                                        case "2":
+                                            nombreUnidad = "Unidad III";
+                                            break;
+                                        }
+                                    %>
+                                        <h4><%=nombreUnidad%></h4>
+                                        <br>
+                                    <% } %>
                                     <h4>Datos :</h4>
                                     <br>
                                 </div>
+                                <% if(datosCabecera != null) {%>
+                                    <input type="hidden" name="idUnidad" class="form-control input-sm" id="" value='<%=Integer.parseInt(datosCabecera[6])+1%>'>
+                                    <%} %>
                                 <div class="row">                                
                                     <label class="col-lg-2 ">Codigo :</label>
                                     <div class="col-lg-4">

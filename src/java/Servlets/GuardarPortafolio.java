@@ -96,6 +96,8 @@ public class GuardarPortafolio extends HttpServlet {
         String Asiste = request.getParameter("asiste");
         String Aprobado = request.getParameter("estAprobado");
         String Desaprobado = request.getParameter("estDesapro");
+//        out.println(request.getParameter("idUnidad"));
+        int idUnidad = Integer.parseInt(request.getParameter("idUnidad").trim());
         
         /*Obtener el IDCARGAACADEMICA*/
         String idCargaAcademica = "";
@@ -122,12 +124,13 @@ public class GuardarPortafolio extends HttpServlet {
         entiPortafolio.setEstudianteAprobado(Integer.parseInt( Aprobado ));
         entiPortafolio.setEstudianteDesaprobado(Integer.parseInt(Desaprobado));
         entiPortafolio.setRecepcioadoPor(revisado);
+        entiPortafolio.setIdUnidad(idUnidad);
 
         negPortafolio.AgregarPortafolio(entiPortafolio);
         
         ClsNegocioPortafolioMaterialDocente negoMaterialDocente2 =  new ClsNegocioPortafolioMaterialDocente();
         
-        ArrayList<String> idinfo = negoMaterialDocente2.obtenerInfoFinalDocente(codDocente,id_Curso);
+        ArrayList<String> idinfo = negoMaterialDocente2.obtenerInfoFinalDocente(codDocente,id_Curso,idUnidad);
         String id[] = idinfo.toArray(new String[idinfo.size()]);
         
         /*FIN GUARDAR CABECERA PORTAFOLIO*/
@@ -168,7 +171,7 @@ public class GuardarPortafolio extends HttpServlet {
         ClsEntidadPortafolioMaterialEstudiante entiMaterialEstudiante = new ClsEntidadPortafolioMaterialEstudiante();
         ClsNegocioPortafolioMaterialEstudiante negoMaterialEstudiante =  new ClsNegocioPortafolioMaterialEstudiante();
 
-//        ArrayList<String> idinfo = negoMaterialDocente.obtenerInfoFinalDocente(codDocente,id_Curso);
+//        ArrayList<String> idinfo = negoMaterialDocente.obtenerInfoFinalDocente(codDocente,id_Curso,idUnidad);
 //        String id[] = idinfo.toArray(new String[idinfo.size()]);
 
         for (int i = 0; i < datosTabla1.size(); i+=4) {

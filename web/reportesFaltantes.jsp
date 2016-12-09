@@ -15,6 +15,8 @@
     String codDocente;
     ArrayList<ClsNegocioPruebaEntrada> dato = null;
     String nivelUsuario = String.valueOf(session.getAttribute("nivelUsuario"));    
+
+    String nombreUnidad = "";
 %>
 <head>
     <title>Reportes Faltantes</title>
@@ -48,7 +50,18 @@
                                             <th>ID</th>
                                             <th>Nombre del curso</th>
                                             <th>Nombre del docente</th>
+                                            <%
+                                                String busqueda = request.getParameter("tipoReporte");
+                                                if (request.getParameter("Listar")!=null) {
+                                                    if(busqueda.equals("Portafolio")){
+                                                    %>            
+                                                    <th>Unidad a hacer</th>
+                                                    <%
+                                                    }
+                                                }
+                                            %>
                                             <th>Controles</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,7 +69,7 @@
                                             if (request.getParameter("Listar")!=null) {
                                                 codDocente = String.valueOf(session.getAttribute("codDocente"));
                                                 ClsNegocioPruebaEntrada datos = new ClsNegocioPruebaEntrada();
-                                                String busqueda = request.getParameter("tipoReporte");
+                                                busqueda = request.getParameter("tipoReporte");
                                                 dato = datos.hacerInformePruebaFaltante(codDocente,busqueda);//ArrayList
 
                                                 Iterator iterator = dato.iterator();
@@ -69,6 +82,24 @@
                                                         <td><%=objenti.getIdCurso()%></td>
                                                         <td><%=objenti.getNombreCurso()%></td>
                                                         <td><%=objenti.getNombreDocente()%></td>
+                                                        <%
+                                                            if(busqueda.equals("Portafolio")){
+                                                                switch(objenti.getIdUnidad()){
+                                                                    case 0:
+                                                                        nombreUnidad = "Unidad I";
+                                                                        break;
+                                                                    case 1:
+                                                                        nombreUnidad = "Unidad II";
+                                                                        break;
+                                                                    case 2:
+                                                                        nombreUnidad = "Unidad III";
+                                                                        break;
+                                                                }
+                                                            %>            
+                                                                <td><%=nombreUnidad%></td>
+                                                            <%
+                                                        }
+                                                        %>
                                                         <td>
                                                             <%
                                                                 if(busqueda.equals("Prueba Entrada")){
@@ -87,12 +118,13 @@
                                                             <%
                                                                 if(busqueda.equals("Portafolio")){
                                                                 %>            
-                                                                <a href="TraerDatosCabeceraPortafolio?busqueda=Portafolio" class="btn btn-info btn-xs btn-controles">Hacer informe</a>                                      
+                                                                <a href="TraerDatosCabeceraPortafolio?busqueda=Portafolio&idUnidad=<%=objenti.getIdUnidad()%>" class="btn btn-info btn-xs btn-controles">Hacer informe</a>                                      
                                                                 <%
                                                             }
                                                             %>
                                                             
                                                         </td>
+                                                        
                                                     </tr>
                                                     <%
                                                 }

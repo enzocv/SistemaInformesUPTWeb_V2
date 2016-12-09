@@ -20,8 +20,11 @@
     String codDocente = String.valueOf(session.getAttribute("codDocente"));
     String nivelUsuario = String.valueOf(session.getAttribute("nivelUsuario"));  
     String id_Curso     = request.getParameter("id_Curso");
+    String id_Portafolio = (String) request.getParameter("id_Portafolio");
     
     String datos1[] = (String[]) request.getAttribute("campo1");
+    ArrayList<String> datos2 = (ArrayList<String>) request.getAttribute("campo2");
+    ArrayList<String> datos3 = (ArrayList<String>) request.getAttribute("campo3");
     
 
 %>
@@ -33,15 +36,18 @@
         <div class="container body-padding">
             <div class="row">
                 <div class="form-reporte shadow">
-                    <form class="form" id="form" method="post" action="GuardarPortafolio">
+                    <form class="form" id="form" method="post" action="ActualizarPortafolio">
                         <fieldset>
                             <div class="form-group">
                                 <div class="sub-title">  
                                     <h2>Informe Final de Portafolio</h2>
                                     <br>
+                                    <h4>Unidad <%=datos1[11]%></h4>
+                                    <br>
                                     <h4>Datos :</h4>
                                     <br>
                                 </div>
+                                <input type="hidden" name="id_Portafolio" class="form-control input-sm" id="" value='<%=id_Portafolio%>'>
                                 <div class="row">                                
                                     <label class="col-lg-2 ">Codigo :</label>
                                     <div class="col-lg-4">
@@ -140,7 +146,7 @@
                                     <div class="col-lg-1">
                                         <input type="text" name="porcentajeAsisten" class="form-control input-sm" id="" value='' disabled>
                                     </div>  
-                                    <input type="hidden" name="asiste" id="asiste" value=''>
+                                    <input type="hidden" name="asiste" id="asiste" value='<%=datos1[6]%>'>
                                 </div>
                                 <div class="row">                                
                                     <label class="col-lg-5 ">Aprobados</label>
@@ -184,14 +190,23 @@
                                             <th class="col-md-1">Cantidad</th>
                                         </thead>
                                         <tbody>
-                                            <tr id='t1addr0'>
-                                                <td><input name="" value="1" type="text" class="form-control"/></td>
-                                                <td><input name="t1descripcion" value="" type="text" class="form-control"/></td>
-                                                <td><input type="checkbox" name="t1chkdigital" value=""/></td>
-                                                <td><input type="checkbox" name="t1chkimpreso" value=""/></td>
-                                                <td><input name="t1cantidad"    value="" type="text" class="form-control"/></td>
-                                            </tr>
-                                            <tr id='t1addr1'></tr>
+                                            <%
+                                                int cantDocente = 0;
+                                                String isSelected = "";
+                                                for (int i = 0; i < datos2.size(); i+=4) {
+                                                    %>
+                                                    <tr id='t1addr<%=cantDocente%>'>
+                                                        <td><input name="" value="<%=cantDocente+1%>" type="text" class="form-control"/></td>
+                                                        <td><input name="t1descripcion<%=cantDocente%>" value="<%=datos2.get(i)%>" type="text" class="form-control"/></td>
+                                                        <td><input type="checkbox" name="t1chkdigital<%=cantDocente%>" value="" <%=isSelected=(datos2.get(i+1).equals("1"))?"checked":""%>/></td>
+                                                        <td><input type="checkbox" name="t1chkimpreso<%=cantDocente%>" value=""<%=isSelected=(datos2.get(i+2).equals("1"))?"checked":""%>/></td>
+                                                        <td><input name="t1cantidad<%=cantDocente%>"    value="<%=datos2.get(i+3)%>" type="text" class="form-control"/></td>
+                                                    </tr>
+                                                    <%
+                                                    cantDocente++;
+                                                }
+                                            %>
+                                            <tr id='t1addr<%=cantDocente%>'></tr>
                                             
                                         </tbody>
                                     </table>
@@ -216,14 +231,22 @@
                                             <th class="col-md-1">Cantidad</th>
                                         </thead>
                                         <tbody>
-                                            <tr id='t2addr0'>
-                                                <td><input name=""              value="1" type="text" class="form-control"/></td>
-                                                <td><input name="t2descripcion" value="" type="text" class="form-control"/></td>
-                                                <td><input name="t2chkdigital"  value="" type="checkbox"/></td>
-                                                <td><input name="t2chkimpreso"  value="" type="checkbox"/></td>
-                                                <td><input name="t2cantidad"    value="" type="text" class="form-control"/></td>
+                                            <%
+                                                int cantEstudiante = 0;                                                
+                                                for (int i = 0; i < datos3.size(); i+=4) {
+                                            %>
+                                            <tr id='t2addr<%=cantEstudiante%>'>
+                                                <td><input name=""              value="<%=cantEstudiante+1%>" type="text" class="form-control"/></td>
+                                                <td><input name="t2descripcion<%=cantEstudiante%>" value="<%=datos3.get(i)%>" type="text" class="form-control"/></td>
+                                                <td><input name="t2chkdigital<%=cantEstudiante%>"  value="" type="checkbox" <%=isSelected=(datos3.get(i+1).equals("1"))?"checked":""%>/></td>
+                                                <td><input name="t2chkimpreso<%=cantEstudiante%>"  value="" type="checkbox" <%=isSelected=(datos3.get(i+2).equals("1"))?"checked":""%>/></td>
+                                                <td><input name="t2cantidad<%=cantEstudiante%>"    value="<%=datos3.get(i+3)%>" type="text" class="form-control"/></td>
                                             </tr>
-                                            <tr id='t2addr1'></tr>
+                                            <%
+                                                    cantEstudiante++;
+                                                }
+                                            %>
+                                            <tr id='t2addr<%=cantEstudiante%>'></tr>
                                             
                                         </tbody>
                                     </table>
@@ -282,7 +305,7 @@
 
             
             /*ADD AND DELETE ROW FOR TABLE 1*/
-            var i=1;
+            var i=<%=cantDocente%>;
             var calculadoPorcentajes = false;
             $("#t1add_row").click(function(){
                 
@@ -307,7 +330,7 @@
             
             /*ADD AND DELETE ROW FOR TABLE 2*/
             
-            var j = 1;
+            var j = <%=cantEstudiante%>;
             
             $("#t2add_row").click(function(){
                 
